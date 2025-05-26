@@ -42,6 +42,11 @@ body {
   cursor: pointer;
 }
 
+.move-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease 0.1s;
+}
+
 /* Resultado */
 .result {
   font-size: 35px;
@@ -102,4 +107,37 @@ body {
     padding: 15px 16px;
   }
 
+}
+
+/*suavemente (fade-in) desde invisible a visible,  "crece" un poquito */
+.result-anim {
+  animation: fadeZoomIn 0.5s ease;
+}
+
+@keyframes fadeZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-win {
+  color: #4CAF50; /* Verde suave */
+}
+
+.result-lose {
+  color: #f44336; /* Rojo vivo */
+}
+
+.result-tie {
+  color: #fac036; /* Amarillo cálido */
+}
+
+/* Ya existente o añadida antes */
+.result-anim {
+  animation: fadeZoomIn 0.5s ease;
 }

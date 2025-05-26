@@ -93,7 +93,30 @@ function playGame(playerMove) {
   localStorage.setItem('score', JSON.stringify(score));
   updateScoreElement();
 
-  document.querySelector('.js-result').innerHTML = result;
+const resultElement = document.querySelector('.js-result');
+
+// Quita clases anteriores de color y animación
+resultElement.classList.remove('result-win', 'result-lose', 'result-tie', 'result-anim');
+
+// Fuerza reinicio de la animación
+void resultElement.offsetWidth;
+
+// Cambia el texto
+resultElement.innerHTML = result;
+
+// Añade la clase de color según resultado
+if (result === 'You win.') {
+  resultElement.classList.add('result-win');
+} else if (result === 'You lose.') {
+  resultElement.classList.add('result-lose');
+} else {
+  resultElement.classList.add('result-tie');
+}
+
+// Añade la clase para animar
+resultElement.classList.add('result-anim');
+
+
 
   document.querySelector('.js-moves').innerHTML = `
     You
