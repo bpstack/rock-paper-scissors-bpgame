@@ -42,50 +42,56 @@ export default function ResultDisplay({ playerMove, computerMove, result }: Resu
           {text}
         </motion.p>
 
-        <div className="flex items-center justify-center gap-4 md:gap-8">
+        <div className="flex items-center justify-center gap-6 md:gap-10">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-3"
           >
             <p className="text-sm md:text-base text-gray-400">Tú</p>
-            <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white bg-primary-dark flex items-center justify-center">
-              <Image
-                src={`/images/${playerMove}-emoji.png`}
-                alt={moveLabels[playerMove]}
-                width={40}
-                height={40}
-                className="md:w-12 md:h-12"
-              />
+            <div className="relative w-20 h-20 md:w-24 md:h-24">
+              <div className="absolute inset-0 rounded-full border border-white/20 blur" />
+              <div className="relative w-full h-full rounded-full border border-white/60 bg-primary-dark flex items-center justify-center shadow-[0_0_25px_rgba(250,192,54,0.2)]">
+                <Image
+                  src={`/images/${playerMove}-emoji.png`}
+                  alt={moveLabels[playerMove]}
+                  width={48}
+                  height={48}
+                  className="md:w-14 md:h-14"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 capitalize">{moveLabels[playerMove]}</p>
           </motion.div>
 
-          <motion.span
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.3, type: 'spring' }}
-            className="text-2xl md:text-3xl font-bold text-gray-500"
+            className="vs-pulse text-sm uppercase tracking-[0.3em] text-gray-300"
           >
             VS
-          </motion.span>
+          </motion.div>
 
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="flex flex-col items-center gap-2"
+            className="flex flex-col items-center gap-3"
           >
             <p className="text-sm md:text-base text-gray-400">Computadora</p>
-            <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white bg-primary-dark flex items-center justify-center">
-              <Image
-                src={`/images/${computerMove}-emoji.png`}
-                alt={moveLabels[computerMove]}
-                width={40}
-                height={40}
-                className="md:w-12 md:h-12"
-              />
+            <div className="relative w-20 h-20 md:w-24 md:h-24">
+              <div className="absolute inset-0 rounded-full border border-white/20 blur" />
+              <div className="relative w-full h-full rounded-full border border-white/60 bg-primary-dark flex items-center justify-center shadow-[0_0_25px_rgba(255,255,255,0.15)]">
+                <Image
+                  src={`/images/${computerMove}-emoji.png`}
+                  alt={moveLabels[computerMove]}
+                  width={48}
+                  height={48}
+                  className="md:w-14 md:h-14"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 capitalize">{moveLabels[computerMove]}</p>
           </motion.div>
@@ -94,4 +100,5 @@ export default function ResultDisplay({ playerMove, computerMove, result }: Resu
     </AnimatePresence>
   )
 }
+
 

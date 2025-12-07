@@ -18,19 +18,23 @@ export default function ScoreDisplay({ score, stats }: ScoreDisplayProps) {
       className="mt-8 space-y-4"
     >
       <div className="grid grid-cols-3 gap-4 max-w-md mx-auto">
-        <div className="bg-green-900/30 rounded-lg p-4 border border-green-500/30">
+        <div className="relative overflow-hidden rounded-2xl p-4 border border-green-500/40 bg-gradient-to-br from-green-900/40 to-transparent">
+          <div className="stat-glow" />
           <p className="text-2xl md:text-3xl font-bold text-accent-green">{score.wins}</p>
-          <p className="text-xs md:text-sm text-gray-400 mt-1">Victorias</p>
+          <p className="text-xs md:text-sm text-gray-300 mt-1">Victorias</p>
         </div>
-        <div className="bg-red-900/30 rounded-lg p-4 border border-red-500/30">
+        <div className="relative overflow-hidden rounded-2xl p-4 border border-red-500/40 bg-gradient-to-br from-red-900/40 to-transparent">
+          <div className="stat-glow" />
           <p className="text-2xl md:text-3xl font-bold text-accent-red">{score.losses}</p>
-          <p className="text-xs md:text-sm text-gray-400 mt-1">Derrotas</p>
+          <p className="text-xs md:text-sm text-gray-300 mt-1">Derrotas</p>
         </div>
-        <div className="bg-yellow-900/30 rounded-lg p-4 border border-yellow-500/30">
+        <div className="relative overflow-hidden rounded-2xl p-4 border border-yellow-500/40 bg-gradient-to-br from-yellow-900/40 to-transparent">
+          <div className="stat-glow" />
           <p className="text-2xl md:text-3xl font-bold text-accent-yellow">{score.ties}</p>
-          <p className="text-xs md:text-sm text-gray-400 mt-1">Empates</p>
+          <p className="text-xs md:text-sm text-gray-300 mt-1">Empates</p>
         </div>
       </div>
+
 
       {totalGames > 0 && (
         <motion.div

@@ -16,31 +16,30 @@ export default function GameControls({ onReset, onToggleAutoPlay, isAutoPlaying 
       className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center"
     >
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(250,192,54,0.35)' }}
         whileTap={{ scale: 0.95 }}
         onClick={onReset}
         className="
-          bg-white text-black font-semibold px-6 py-3 rounded-lg
-          hover:bg-accent-yellow transition-all duration-300
+          bg-gradient-to-br from-white to-white/80 text-black font-semibold px-6 py-3 rounded-xl
+          hover:from-accent-yellow hover:to-accent-yellow/90 transition-all duration-300
           focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-offset-2 focus:ring-offset-primary-dark
-          shadow-lg hover:shadow-xl
+          shadow-lg hover:shadow-[0_20px_45px_rgba(250,192,54,0.4)]
         "
       >
         Reiniciar Puntuación
       </motion.button>
-
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={onToggleAutoPlay}
         className={`
-          font-semibold px-6 py-3 rounded-lg transition-all duration-300
+          font-semibold px-6 py-3 rounded-xl transition-all duration-300
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-dark
-          shadow-lg hover:shadow-xl
+          shadow-lg hover:shadow-[0_20px_45px_rgba(255,255,255,0.25)]
           ${
             isAutoPlaying
-              ? 'bg-accent-red text-white hover:bg-red-600 focus:ring-accent-red'
-              : 'bg-white text-black hover:bg-accent-yellow focus:ring-accent-yellow'
+              ? 'bg-gradient-to-r from-accent-red to-red-600 text-white focus:ring-accent-red'
+              : 'bg-gradient-to-r from-white/90 to-white text-black hover:from-accent-yellow hover:to-accent-yellow/90 focus:ring-accent-yellow'
           }
         `}
       >
