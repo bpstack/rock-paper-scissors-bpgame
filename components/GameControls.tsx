@@ -13,17 +13,18 @@ export default function GameControls({ onReset, onToggleAutoPlay, isAutoPlaying 
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center"
+      className="mt-6 flex flex-col sm:flex-row gap-3 justify-center items-center"
     >
       <motion.button
-        whileHover={{ scale: 1.05, boxShadow: '0 15px 35px rgba(250,192,54,0.35)' }}
+        whileHover={{ scale: 1.05, boxShadow: '0 10px 25px rgba(250,192,54,0.35)' }}
         whileTap={{ scale: 0.95 }}
         onClick={onReset}
         className="
-          bg-gradient-to-br from-white to-white/80 text-black font-semibold px-6 py-3 rounded-xl
+          bg-gradient-to-br from-white to-white/80 text-black font-semibold px-4 py-2 rounded-lg
           hover:from-accent-yellow hover:to-accent-yellow/90 transition-all duration-300
           focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:ring-offset-2 focus:ring-offset-primary-dark
-          shadow-lg hover:shadow-[0_20px_45px_rgba(250,192,54,0.4)]
+          shadow-md hover:shadow-[0_15px_35px_rgba(250,192,54,0.35)]
+          text-sm
         "
       >
         Reiniciar Puntuación
@@ -33,9 +34,10 @@ export default function GameControls({ onReset, onToggleAutoPlay, isAutoPlaying 
         whileTap={{ scale: 0.95 }}
         onClick={onToggleAutoPlay}
         className={`
-          font-semibold px-6 py-3 rounded-xl transition-all duration-300
+          font-semibold px-4 py-2 rounded-lg transition-all duration-300
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-dark
-          shadow-lg hover:shadow-[0_20px_45px_rgba(255,255,255,0.25)]
+          shadow-md hover:shadow-[0_15px_35px_rgba(255,255,255,0.25)]
+          text-sm
           ${
             isAutoPlaying
               ? 'bg-gradient-to-r from-accent-red to-red-600 text-white focus:ring-accent-red'
@@ -43,9 +45,8 @@ export default function GameControls({ onReset, onToggleAutoPlay, isAutoPlaying 
           }
         `}
       >
-        {isAutoPlaying ? '⏸ Detener Auto Play' : '▶ Auto Play'}
+        {isAutoPlaying ? '⏸ Detener' : '▶ Auto Play'}
       </motion.button>
     </motion.div>
   )
 }
-
