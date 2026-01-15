@@ -24,3 +24,34 @@ export interface GameStats {
   streakType: 'win' | 'lose' | null
 }
 
+export interface Achievement {
+  id: string
+  name: string
+  description: string
+  icon: string
+  condition: (stats: AchievementStats) => boolean
+  rarity: 'common' | 'rare' | 'epic' | 'legendary'
+}
+
+export interface AchievementStats {
+  totalWins: number
+  totalLosses: number
+  totalTies: number
+  totalGames: number
+  currentWinStreak: number
+  longestWinStreak: number
+  currentLoseStreak: number
+  longestLoseStreak: number
+  currentTieStreak: number
+  longestTieStreak: number
+  rockWins: number
+  paperWins: number
+  scissorsWins: number
+  winsAfterLose: number
+  perfectGames: number
+}
+
+export interface UnlockedAchievement {
+  achievementId: string
+  unlockedAt: number
+}

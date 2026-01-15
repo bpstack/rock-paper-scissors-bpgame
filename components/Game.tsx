@@ -9,6 +9,8 @@ import MoveButton from './MoveButton'
 import ResultDisplay from './ResultDisplay'
 import ScoreDisplay from './ScoreDisplay'
 import GameControls from './GameControls'
+import { AchievementNotification } from './AchievementNotification'
+import { AchievementsDisplay } from './AchievementsDisplay'
 import { Move } from '@/types/game'
 
 export default function Game() {
@@ -17,6 +19,8 @@ export default function Game() {
     lastResult,
     isAutoPlaying,
     stats,
+    unlockedAchievements,
+    newAchievement,
     playGame,
     resetScore,
     toggleAutoPlay,
@@ -50,6 +54,10 @@ export default function Game() {
         <div className="meteor-shower" />
       </div>
 
+      <div className="absolute top-4 right-4 z-10">
+        <AchievementsDisplay unlockedAchievements={unlockedAchievements} />
+      </div>
+
       <div className="w-full max-w-2xl text-center glass-panel px-3 py-4 md:px-10 md:py-12">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -80,7 +88,6 @@ export default function Game() {
 
 
 
-
         {lastResult && (
           <ResultDisplay
             playerMove={lastResult.playerMove}
@@ -97,10 +104,9 @@ export default function Game() {
           isAutoPlaying={isAutoPlaying}
         />
 
-
-
       </div>
+
+      <AchievementNotification achievementId={newAchievement} onClose={() => {}} />
     </div>
   )
 }
-
