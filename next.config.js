@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
+const withSerwist = require('@serwist/next').default({
+  swSrc: 'app/sw.ts',
+  swDest: 'sw.js',
+})
+
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Habilita exportación estática para FTP
+  output: 'export',
   images: {
-    unoptimized: true, // Necesario para exportación estática
+    unoptimized: true,
   },
-  trailingSlash: true, // Opcional: ayuda con algunos servidores
+  trailingSlash: true,
 }
 
-module.exports = nextConfig
-
+module.exports = withSerwist(nextConfig)

@@ -1,112 +1,178 @@
-# 🪨📄✂️ Rock Paper Scissors - Next.js
+# 🪨📄✂️ Rock Paper Scissors - Next.js PWA
 
-Una versión moderna y mejorada del clásico juego de Piedra, Papel o Tijera construida con Next.js 14, TypeScript, Tailwind CSS y Framer Motion.
+A modern and enhanced version of the classic Rock Paper Scissors game built with Next.js 16, TypeScript, Tailwind CSS, Framer Motion, and Serwist 9.5.0 for full PWA functionality.
 
+Inspired by the classic version created by supersimpledev: https://supersimpled.dev/projects/rock-paper-scissors/
 
-Esta versión, traducida al español, está inspirada en la versión clásica del juego creada por supersimpledev, disponible en:
-https://supersimple.dev/projects/rock-paper-scissors/
+**Demo:** ppt.stackbp.es
 
-De su autor he aprendido los cimientos de JavaScript, y sus cursos han sido de gran ayuda para iniciarme en vanilla JS y poder evolucionar hasta crear esta versión avanzada del proyecto.
+## ✨ PWA Features
 
-Si simplemente quieres probarla entra en este enlace: www.example.stackbp.es :)
+### 📱 Installable
+- **Installable app**: Available on iOS, Android, and desktop as a native app
+- **Service Worker**: Works offline after first visit
+- **Complete manifest**: Full configuration with icons, colors, and metadata
 
+### 🎮 Game Features
+- **Classic game**: Rock Paper Scissors with enhanced logic
+- **Auto Play**: Automatic mode to watch the game in action
+- **Keyboard shortcuts**: Press `R`, `P`, or `S` to play quickly
+- **Persistence**: Your score is automatically saved in the browser
 
-## ✨ Características
+### 🏆 Achievement System
+- **24 unique achievements** across 5 categories
+- **Streak achievements**: Win 5, 10, 15, 20 games in a row
+- **Victory milestones**: 10, 25, 50, 100, 200 total wins
+- **Game count milestones**: 1, 10, 50, 100 games played
+- **Move-specific achievements**: Master each move type
+- **Special achievements**: Time-based, performance-based, and rare challenges
+- **Rarity tiers**: Common, Rare, Epic, Legendary
+- **Progress tracking**: All achievements saved to localStorage
+- **Unlock notifications**: Animated popups when achievements are unlocked
+- **Achievements gallery**: View all unlocked achievements with details
 
-### 🎮 Funcionalidades del Juego
-- **Juego clásico**: Piedra, Papel o Tijera con lógica mejorada
-- **Auto Play**: Modo automático para ver el juego en acción
-- **Atajos de teclado**: Presiona `R`, `P` o `S` para jugar rápidamente
-- **Persistencia**: Tu puntuación se guarda automáticamente en el navegador
+### 🎨 UI/UX
+- **Modern design**: Clean and attractive interface with Tailwind CSS
+- **Smooth animations**: Fluid transitions with Framer Motion
+- **Responsive**: Optimized for mobile, tablet, and desktop
+- **Visual feedback**: Colors and animations indicating the result
 
-### 📊 Estadísticas Avanzadas
-- **Puntuación detallada**: Victorias, derrotas y empates
-- **Porcentaje de victorias**: Calculado automáticamente
-- **Rachas**: Seguimiento de rachas de victorias y derrotas
-- **Historial completo**: Todas las partidas se guardan para análisis
+## 🛠️ Installation
 
-### 🎨 Mejoras de UI/UX
-- **Diseño moderno**: Interfaz limpia y atractiva con Tailwind CSS
-- **Animaciones fluidas**: Transiciones suaves con Framer Motion
-- **Responsive**: Optimizado para móviles, tablets y escritorio
-- **Feedback visual**: Colores y animaciones que indican el resultado
-- **Accesibilidad**: Soporte para lectores de pantalla y navegación por teclado
-
-### 🚀 Tecnologías
-- **Next.js 14**: Framework React con App Router
-- **TypeScript**: Tipado estático para mayor seguridad
-- **Tailwind CSS**: Estilos modernos y responsivos
-- **Framer Motion**: Animaciones fluidas y profesionales
-- **React Hooks**: Lógica reutilizable y mantenible
-
-## 🛠️ Instalación
-
-1. **Instala las dependencias:**
 ```bash
 npm install
 ```
 
-2. **Ejecuta el servidor de desarrollo:**
+## 🚀 Development
+
 ```bash
 npm run dev
 ```
 
-3. **Abre tu navegador:**
-Navega a [http://localhost:3000](http://localhost:3000)
+For development, use `npm run dev` which runs Next.js with webpack (required by Serwist).
 
-## 📦 Scripts Disponibles
+Navigate to [http://localhost:3000](http://localhost:3000)
 
-- `npm run dev` - Inicia el servidor de desarrollo
-- `npm run build` - Construye la aplicación para producción
-- `npm start` - Inicia el servidor de producción
-- `npm run lint` - Ejecuta el linter
+**Note:** The service worker does NOT work in dev mode. To test full PWA features, use production mode.
 
-## 🎯 Cómo Jugar
+## 📦 Production
 
-1. **Haz clic** en uno de los botones (Piedra, Papel o Tijera)
-2. **O presiona** las teclas `R`, `P` o `S` en tu teclado
-3. **Observa** el resultado y tu puntuación actualizada
-4. **Activa Auto Play** para ver el juego automáticamente
-5. **Reinicia** tu puntuación cuando quieras empezar de nuevo
+```bash
+npm run build
+npm start
+```
 
-## 📁 Estructura del Proyecto
+Or to serve static files (FTP/Hostinger):
+
+```bash
+npm run build
+```
+
+Static files are generated in `out/`. Upload the contents of `out/` to your FTP.
+
+## 🏆 Achievements
+
+### Streak Achievements
+| Achievement | Requirement | Rarity |
+|-------------|-------------|--------|
+| Maestro de Piedra | Win 5 games in a row | Common |
+| Señor del Papel | Win 10 games in a row | Rare |
+| Amo de las Tijeras | Win 15 games in a row | Epic |
+| Trío Legendario | Win 20 games in a row | Legendary |
+
+### Victory Milestones
+| Achievement | Requirement | Rarity |
+|-------------|-------------|--------|
+| Primeros Pasos | 10 total wins | Common |
+| Guerrero en Ascenso | 25 total wins | Common |
+| Destructor de ilusiones | 50 total wins | Rare |
+| Maestro de la Estrategia | 100 total wins | Epic |
+| El Legendario | 200 total wins | Legendary |
+
+### Move Mastery
+| Achievement | Requirement | Rarity |
+|-------------|-------------|--------|
+| Devoto de la Piedra | Win 10 times with rock | Common |
+| Devoto del Papel | Win 10 times with paper | Common |
+| Devoto de las Tijeras | Win 10 times with scissors | Common |
+| Sabio del Equilibrio | Win 5 times with each move | Rare |
+
+### Special Achievements
+| Achievement | Requirement | Rarity |
+|-------------|-------------|--------|
+| Sin Fracasos | 10 games without losing | Rare |
+| Doble O Nada | Win immediately after losing | Common |
+| Resurreccion | 3 wins in a row after losing | Epic |
+| Abrazo Celestial | 3 ties in a row | Rare |
+| Armonia Universal | 5 ties in a row | Epic |
+| Búho Nocturno | Play between 2-5 AM | Rare |
+| Alondra Madrugadora | Play before 7 AM | Rare |
+
+## 🔧 PWA Configuration
+
+### Service Worker (Serwist 9.5.0)
+- **Offline-first**: Works without network after first visit
+- **Cache strategies**:
+  - Google Fonts: CacheFirst (1 year)
+  - Images: CacheFirst (30 days)
+  - Assets: CacheFirst (1 year, hashed)
+
+### PWA Components
+- `app/components/ServiceWorkerRegister.tsx`: Registers the SW
+- `app/components/UpdateNotification.tsx`: New version notification
+- `app/components/InstallPrompt.tsx`: Install button + iOS instructions
+- `components/AchievementNotification.tsx`: Achievement unlock popup
+- `components/AchievementsDisplay.tsx`: Achievements gallery modal
+
+## 📁 Project Structure
 
 ```
-├── app/              # App Router de Next.js
-│   ├── layout.tsx    # Layout principal
-│   ├── page.tsx      # Página principal
-│   └── globals.css   # Estilos globales
-├── components/        # Componentes React
-│   ├── Game.tsx      # Componente principal del juego
+├── app/
+│   ├── components/            # PWA components
+│   │   ├── ServiceWorkerRegister.tsx
+│   │   ├── UpdateNotification.tsx
+│   │   └── InstallPrompt.tsx
+│   ├── layout.tsx             # Main layout + PWA
+│   ├── page.tsx               # Main page
+│   ├── globals.css            # Global styles
+│   └── sw.ts                  # Service Worker (Serwist)
+├── components/                # Game components
+│   ├── Game.tsx
 │   ├── MoveButton.tsx
 │   ├── ResultDisplay.tsx
 │   ├── ScoreDisplay.tsx
-│   └── GameControls.tsx
-├── hooks/            # Custom hooks
-│   └── useGame.ts    # Lógica del juego
-├── types/            # Definiciones TypeScript
-│   └── game.ts
-└── public/           # Archivos estáticos
-    └── images/       # Imágenes del juego
+│   ├── GameControls.tsx
+│   ├── AchievementNotification.tsx
+│   └── AchievementsDisplay.tsx
+├── data/
+│   └── achievements.ts        # Achievement definitions
+├── hooks/
+│   └── useGame.ts             # Game logic
+├── types/
+│   └── game.ts                # TypeScript definitions
+└── public/
+    ├── manifest.json          # PWA manifest
+    └── icons/                 # App icons
+        ├── icon.svg
+        └── icon-*.png         # Generated PNG icons (72-512px)
 ```
 
-## 🔄 Migración desde la versión anterior
+## 🧪 Testing PWA
 
-Este proyecto es una migración completa desde una aplicación HTML/CSS/JS vanilla a Next.js con las siguientes mejoras:
+To test PWA features:
 
-- ✅ Arquitectura moderna con componentes React
-- ✅ TypeScript para type safety
-- ✅ Mejor organización del código
-- ✅ Estadísticas avanzadas
-- ✅ Animaciones mejoradas
-- ✅ Mejor experiencia de usuario
-- ✅ Código más mantenible y escalable
+1. **Local production**: `npm run build && npm start`
+2. **Offline**: Disconnect network, open app - still works
+3. **Installation**: "Instalar App" button in bottom left corner
+4. **Updates**: Deploy new version, open installed app, notification appears
+5. **Achievements**: Play games and unlock achievements
 
-## 📝 Licencia
+Service Workers require HTTPS (or localhost).
 
-Este proyecto es de código abierto y está disponible para uso personal y educativo.
+## 📝 License
+
+Open source for personal and educational use.
 
 ---
 
-¡Disfruta jugando! 🎮
-
+Enjoy playing! 🎮
