@@ -4,7 +4,7 @@ A modern and enhanced version of the classic Rock Paper Scissors game built with
 
 Inspired by the classic version created by supersimpledev: https://supersimple.dev/projects/rock-paper-scissors/
 
-**Demo:** ppt.stackbp.es
+**Demo:** [ppt.stackbp.es](https://example.stackbp.es/)
 
 ## ✨ PWA Features
 
