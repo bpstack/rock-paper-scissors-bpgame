@@ -2,7 +2,7 @@
 
 A modern and enhanced version of the classic Rock Paper Scissors game built with Next.js 16, TypeScript, Tailwind CSS, Framer Motion, and Serwist 9.5.0 for full PWA functionality.
 
-Inspired by the classic version created by supersimpledev: https://supersimpled.dev/projects/rock-paper-scissors/
+Inspired by the classic version created by supersimpledev: https://supersimple.dev/projects/rock-paper-scissors/
 
 **Demo:** ppt.stackbp.es
 
