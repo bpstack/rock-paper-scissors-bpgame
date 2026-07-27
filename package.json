@@ -2,6 +2,11 @@
   "name": "rock-paper-scissors-pwa",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@11.13.0",
+  "engines": {
+    "node": "24.x",
+    "npm": ">=11"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
