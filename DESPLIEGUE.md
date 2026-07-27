@@ -1,21 +1,20 @@
 # Despliegue
 
-Cómo se publica este proyecto. **Léelo entero antes de subir nada**: hay dos versiones del juego
-vivas en internet y se despliegan de formas distintas.
+Cómo se publica este proyecto. **Léelo entero antes de subir nada**: el despliegue es manual y no
+hay ninguna automatización que lo cubra.
 
 ---
 
 ## Dónde vive cada cosa
 
-| URL                                                   | Qué sirve                                   | Cómo se despliega                       |
-| ----------------------------------------------------- | ------------------------------------------- | --------------------------------------- |
-| **https://example.stackbp.es/**                       | **La app Next actual** (export estático)    | Subida manual por FTP a Hostinger       |
-| https://bpstack.github.io/rock-paper-scissors-bpgame/ | El juego **vanilla antiguo** (`index.html`) | GitHub Pages, automático en cada `push` |
+| URL                             | Qué sirve                                | Cómo se despliega                 |
+| ------------------------------- | ---------------------------------------- | --------------------------------- |
+| **https://example.stackbp.es/** | **La app Next actual** (export estático) | Subida manual por FTP a Hostinger |
 
-⚠️ **GitHub Pages está configurado sobre `main`, ruta `/`**, así que republica la raíz del repo en
-cada push — y en la raíz sigue estando el `index.html` de la versión clásica en HTML plano, con sus
-`styles/` e `images/`. **No sirve la app Next**, porque `out/` está en el `.gitignore` y nunca llega
-al repositorio. Si algún día se apaga Pages o se apunta al build de Next, actualiza esta tabla.
+**Es el único despliegue.** GitHub Pages estuvo activo sobre `main` ruta `/` y republicaba en cada
+push el `index.html` de la versión clásica en HTML plano — no la app Next, porque `out/` está en el
+`.gitignore` y nunca llega al repositorio. **Se apagó el 2026-07-27**; si vuelve a hacer falta,
+apúntalo al build de Next con una Action, no a la raíz del repo.
 
 ---
 
@@ -24,11 +23,15 @@ al repositorio. Si algún día se apaga Pages o se apunta al build de Next, actu
 ### 1. Generar el export estático
 
 ```bash
-npm install
+npm ci             # reproduce package-lock.json exacto, sin reescribirlo
 npm run build      # next build --webpack
 ```
 
-El proyecto usa **npm** (`package-lock.json`), no pnpm.
+El proyecto usa **npm** (`package-lock.json`), no pnpm. La versión la fija el repo, no la máquina:
+`.nvmrc` (Node 24), `engines.node: "24.x"` y `packageManager: "npm@11.13.0"`.
+
+Usa `npm ci` y no `npm install` para publicar: reproduce el lockfile tal cual y falla si hay drift,
+en vez de resolver versiones nuevas en silencio.
 
 `next.config.js` fija `output: 'export'`, así que el build **no arranca ningún servidor**: escribe
 un sitio estático completo en **`out/`** (~50 archivos). Con `trailingSlash: true`, cada ruta se
@@ -67,9 +70,18 @@ Se sube **el contenido de `out/`** (no la carpeta en sí) a la raíz pública de
 
 ---
 
+## Línea base (medida el 2026-07-27, Node 24.16.0 / npm 11.13.0)
+
+| Comprobación    | Resultado                                                        |
+| --------------- | ---------------------------------------------------------------- |
+| `npm ci`        | ✅ reproduce el lockfile sin modificarlo                         |
+| `npm run build` | ✅ verde — 2 rutas estáticas, export completo en `out/`          |
+| `npm audit`     | ⚠️ 10 vulnerabilidades (8 altas), heredadas de `libvips`/`sharp` |
+
+Las de `npm audit` son **preexistentes** y vienen de `sharp` (que Next arrastra para imágenes).
+No las arregles dentro de otra tarea: `npm audit fix --force` propone cambios rompedores.
+
 ## Pendiente
 
-- **Fijar la versión de Node y del gestor de paquetes.** Hoy no hay `.nvmrc`, ni `engines`, ni
-  `packageManager` en el `package.json`: el build depende de la versión de Node que tenga suelta la
-  máquina desde la que se publique.
-- **Decidir qué pasa con GitHub Pages**, que hoy publica la versión antigua sin que nadie lo pida.
+- **Revisar las vulnerabilidades de `sharp`/`libvips`** en una sesión propia y decidir si tocan
+  actualización o si no aplican a un export estático que no procesa imágenes en servidor.
