@@ -34,8 +34,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# deployment docs
-DESPLIEGUE.md
+# DESPLIEGUE.md SÍ se versiona: documenta cómo se publica el sitio y esa
+# información no puede vivir solo en una máquina. No contiene credenciales.
 
 
 # opencode
